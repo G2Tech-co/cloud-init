@@ -19,6 +19,7 @@
 
 # update and upgrade
 apt update && apt upgrade -y
+apt install git
 sleep 1
 
 # install gitlab-runner
