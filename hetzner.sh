@@ -36,7 +36,6 @@ runcmd:
   - apt update
   - apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
   - echo "Installing gitlab-runner..."
-  - mkdir gitlab-runner && cd gitlab-runner
   - curl -LJO "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb"
   - dpkg -i gitlab-runner_amd64.deb
   - reboot
