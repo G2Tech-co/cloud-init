@@ -29,14 +29,15 @@ runcmd:
   - sed -i -e '/^#AllowAgentForwarding/s/^.*$/AllowAgentForwarding no/' /etc/ssh/sshd_config
   - sed -i -e '/^#AuthorizedKeysFile/s/^.*$/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
   - sed -i '$a AllowUsers arsalan' /etc/ssh/sshd_config
-  - echo "Installing docker..."
+  - echo "1. (!)Installing docker..."
   - mkdir -p /etc/apt/keyrings
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
   - echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   - apt update
   - apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-  - echo "Installing gitlab-runner..."
+  - echo "2. (!)Installing gitlab-runner..."
   - curl -LJO "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb"
   - dpkg -i gitlab-runner_amd64.deb
   - sudo usermod -aG docker gitlab-runner
+  - echo "3. (!)Reboot server"
   - reboot
