@@ -39,5 +39,7 @@ runcmd:
   - curl -LJO "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb"
   - dpkg -i gitlab-runner_amd64.deb
   - sudo usermod -aG docker gitlab-runner
-  - echo "3. (!)Reboot server"
+  - echo "3. (!)Installing node-exporter"
+  - apt install -y prometheus-node-exporter
+  - echo "(!)Reboot server"
   - reboot
